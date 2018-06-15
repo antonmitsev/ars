@@ -1,8 +1,25 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/:apiName?', function (req, res) {
-  res.send({...req.params, ...req.query});
-});
+var myRouter = function (req, res, next) {
+  const response = getResponse(req);
+  console.log(response);
+  res.send(response);
+}
+
+router.use('/:apiName?', myRouter);
+
+function getResponse(params){
+  return({
+    params: {
+      ...params.params
+    },
+    query: {
+      ...params.query
+    },
+    reqMethod: params.method || null
+  });
+}
+
   
 module.exports = router;
