@@ -1,10 +1,11 @@
 var express = require('express');
+var feature4 = require('../models/feature4');
 var router = express.Router();
 
 var myRouter = function (req, res, next) {
   const response = getResponse(req);
   console.log(response);
-  res.send(response);
+  res.send({...response, feature4: feature4.whatsMyName()} );
 }
 
 router.use('/:apiName?', myRouter);
