@@ -1,4 +1,5 @@
 var express = require('express');
+var feature3 = require('../model/feature3.js');
 var router = express.Router();
 
 var myRouter = function (req, res, next) {
@@ -17,7 +18,8 @@ function getResponse(params){
     query: {
       ...params.query
     },
-    reqMethod: params.method || null
+    reqMethod: params.method || null,
+    feature3: feature3.result
   });
 }
 
