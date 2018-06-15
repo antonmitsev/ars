@@ -1,6 +1,7 @@
 var express = require('express');
 var feature3 = require('../model/feature3.js');
 var feature4 = require('../models/feature4');
+var f1 = require('../model/featureF1');
 var router = express.Router();
 
 var myRouter = function (req, res, next) {
@@ -20,7 +21,8 @@ function getResponse(params){
       ...params.query
     },
     reqMethod: params.method || null,
-    feature3: feature3.result
+    feature3: feature3.result,
+    f1: f1
   });
 }
 
